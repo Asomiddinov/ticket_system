@@ -1,0 +1,61 @@
+rgba(6, 116, 76, 0.681);
+<div class="col">
+    <b>{{ form.price.label }}</b>
+    {{ form.price(class="form-control", placeholder="UZS/Transfer") }}
+</div>
+<!---->
+<div>
+    {% for c in companies %}
+    <div>
+        <input class="form-check-input" type="checkbox" value="{{ c.company }}" id="flexCheckDefault"
+            hx-post="/select_company" hx-vals='{"company": "{{ c.company }}"}' hx-trigger="change"
+            hx-swap="outerHTML with:closest div">
+        <label class="form-check-label" for="flexCheckDefault"></label>
+        {{ c.company }}
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <input class="check" type="checkbox" value="{{ task.company }}" id="flexCheckDefault"
+        onclick="updateCompany(this.value)" hx-post="/select_company" hx-vals='{"company": "{{ task.company }}"}'
+        hx-trigger="change">
+    <label class="btn" for="flexCheckDefault"></label>
+    {{ task.company }}
+</div>
+
+<div class="col">
+    <input id="orgdata" name="orgdata" hx-get="/search_external" hx-trigger="keyup changed delay:100ms"
+        hx-target="#companies" hx-swap="innerHTML" class="form-control container" type="search"
+        placeholder="Search OrgInfo" aria-label="Search OrgInfo">
+    <div id="companies"></div>
+</div>
+Draft of search_external.html:
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Results</title>
+</head>
+
+<body>
+    <h1>Search Results</h1>
+    <div id="results">
+        <!-- The search results will be inserted here by htmx -->
+    </div>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script>
+        window.addEventListener('load', function () {
+            var orgdata = localStorage.getItem('orgdata');
+            if (orgdata) {
+                var resultsDiv = document.getElementById('results');
+                resultsDiv.setAttribute('hx-get', '/search_external');
+                resultsDiv.setAttribute('hx-params', 'orgdata=' + encodeURIComponent(orgdata));
+                resultsDiv.setAttribute('hx-trigger', 'load');
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+<div name="seat_id" value="{{ seat.id }}" {% if seat.is_booked %} disabled {% endif %}></div>

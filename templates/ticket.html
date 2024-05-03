@@ -1,0 +1,52 @@
+{% extends 'layout.html'%}
+{% block content %}
+<div class="form-control container">
+    <h1>
+        Exhibition ID: {{ ticket.id }}
+    </h1>
+    <h2>{{ ticket.exh_name }}</h2><br>
+    <b>Exhibition time(UZ)</b>:
+    <table>
+        <tr>{{ ticket.exh_datetime|replace('T', ' ') }}</tr>
+    </table><br>
+    <b>Seats:</b>
+    <center><img src="{{ url_for('static', filename='images/seat_view_orig.jpg') }}" class="seat_view_orig"
+            usemap=#seatmap></center><br>
+    <div class="grid-container">
+        {% for seat in seats %}
+        <form method="POST" action="{{ url_for('book_seats', exh_name=ticket.exh_name, seat_id=seat.id) }}">
+            <ul class="text-center">
+                <div class="alert alert-secondary" role="alert">
+                    <li>SeatID: <b>{{ seat.id }}</b></li>
+                    <li>row number: <b>{{ seat.seat_number }}</b></li>
+                    <li>row price: <b>{{ "{:,}".format(seat.price) }} USD</b></li>
+                </div>
+                <center>
+                    <input class="btn btn-primary" type="submit" value="Book Seats">
+                </center>
+            </ul>
+        </form>
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .h2 {
+        color: dark;
+    }
+
+    .form-control {
+        background-color: #d6c3a5;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .seat_view_orig {
+        border-radius: 22%;
+    }
+</style>
+{% endblock %}
+#d6c3a5, #96b3ae

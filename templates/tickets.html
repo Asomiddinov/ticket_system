@@ -1,0 +1,28 @@
+{% extends 'layout.html'%}
+{% block content %}
+<h1><b>Tickets</b></h1>
+<div class="container">
+    <div class="grid-container">
+        {% for i in exh %}
+        <div class="form-control">
+            <form action="{{ url_for('ticket', id=i.id) }}" method="get">
+                When: <c id="exh_datetime" class=""><b>{{ i.exh_datetime|replace('T', ' ') }}</b></c><br>
+                <p><b>{{ i.id }}. {{ i.exh_name }}</b></p>
+                <button type="submit" class="btn btn-primary">Want to attend?</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .form-control {
+        background-color: #FFBE98;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+</style>
+{% endblock %}

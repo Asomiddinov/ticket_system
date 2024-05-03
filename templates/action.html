@@ -1,0 +1,229 @@
+{% extends 'layout.html' %}
+{% block content %}<br>
+
+<body>
+    {{ form.csrf_token() }}
+    <h1 style="color: #6a9e8c;"><b><mark>Sales action</mark></b></h1><br>
+    <center>
+        <form action="/action" method="post" enctype="multipart/form-data">
+            <input class="form-control container" type="file" name="files" accept=".xls,.xlsx" required><br>
+            <input class="btn btn-success" type="submit" value="Upload">
+        </form>
+    </center><br><br>
+    <form class="form-control container" method="post" autocomplete="on" style="background-color: #ffbe98;">
+        <div class="row">
+            <div class="col" autocomplete="on">
+                <b>{{ form.date.label }}</b>
+                <input type="date" required {{ form.date(class="form-control" ) }} </div>
+                <div class="col" autocomplete="on">
+                    <b>{{ form.client_id.label }}</b>
+                    {{ form.client_id(class="form-control", placeholder="Choose Client's id") }}
+                </div>
+                <div class="col">
+                    <b>{{ form.con_note.label }}</b>
+                    {{ form.con_note(class="form-control", placeholder="Number") }}
+                </div>
+                <div class="col">
+                    <b>{{ form.client.label }}</b>
+                    {{ form.client(class="form-control", placeholder="Full name") }}
+                </div>
+                <div class="col">
+                    <b>{{ form.address.label }}</b>
+                    {{ form.address(class="form-control", placeholder="Delivery Address") }}
+                </div>
+                <div class="col">
+                    <b>{{ form.paid.label }}</b>
+                    <b>{{ form.paid(class="form-control", placeholder="UZS/USD/RUB/Transfer") }}</b>
+                </div>
+                <div class="col">
+                    <b>{{ form.currency.label }}</b>
+                    <b>{{ form.currency(class="form-control") }}</b>
+                </div>
+                <div class="col">
+                    <b>{{ form.s_rep.label }}</b>
+                    <b>{{ form.s_rep(class="form-control") }}</b>
+                </div>
+                <br>
+                <div class="row">
+                    <h2><b>RM Section:</b></h2>
+                    <div class="col">
+                        <b>{{ form.mark.label }}</b>
+                        {{ form.mark(class="form-control", placeholder="Mark of material") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.quantity.label }}</b>
+                        {{ form.quantity(class="form-control", placeholder="Quantity of concrete") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.price_rm.label }}</b>
+                        {{ form.price_rm(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                </div>
+                <div class="row">
+                    <h2><b>Tray(Lotok) Section:</b></h2>
+                    <div class="col">
+                        <b>{{ form.quantity_tray.label }}</b>
+                        {{ form.quantity_tray(class="form-control", placeholder="Quantity of Lotok") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.price_tray.label }}</b>
+                        {{ form.price_tray(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                </div>
+                <div class="row">
+                    <h2><b>FBS Section:</b></h2>
+                    <div class="row">
+                        <div class="col">
+                            <b>{{ form.quantity_fbs1.label }}</b>
+                            {{ form.quantity_fbs1(class="form-control", placeholder="Quantity of FBS") }}
+                            <b>{{ form.price_fbs06.label }}</b>
+                            {{ form.price_fbs06(class="form-control", placeholder="UZS/Transfer") }}
+                        </div>
+                        <div class="col">
+                            <b>{{ form.quantity_fbs2.label }}</b>
+                            {{ form.quantity_fbs2(class="form-control", placeholder="Quantity of FBS") }}
+                            <b>{{ form.price_fbs08.label }}</b>
+                            {{ form.price_fbs08(class="form-control", placeholder="UZS/Transfer") }}
+                        </div>
+                        <div class="col">
+                            <b>{{ form.quantity_fbs3.label }}</b>
+                            {{ form.quantity_fbs3(class="form-control", placeholder="Quantity of FBS") }}
+                            <b>{{ form.price_fbs09.label }}</b>
+                            {{ form.price_fbs09(class="form-control", placeholder="UZS/Transfer") }}
+                        </div>
+                        <div class="col">
+                            <b>{{ form.quantity_fbs4.label }}</b>
+                            {{ form.quantity_fbs4(class="form-control", placeholder="Quantity of FBS") }}
+                            <b>{{ form.price_fbs12.label }}</b>
+                            {{ form.price_fbs12(class="form-control", placeholder="UZS/Transfer") }}
+                        </div>
+                        <div class="col">
+                            <b>{{ form.quantity_fbs5.label }}</b>
+                            {{ form.quantity_fbs5(class="form-control", placeholder="Quantity of FBS") }}
+                            <b>{{ form.price_fbs24.label }}</b>
+                            {{ form.price_fbs24(class="form-control", placeholder="UZS/Transfer") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2><b>Precast Section:</b></h2>
+                    <div class="col"><b>{{ form.precast1.label }}</b>
+                        {{ form.precast1(class="form-control", placeholder="size1") }}
+
+                        <b>{{ form.length1.label }}</b>
+                        {{ form.length1(class="form-control", placeholder="") }}
+
+                        <b>{{ form.pre_width1.label }}</b>
+                        {{ form.pre_width1(class="form-control") }}
+
+                        <b>{{ form.type1.label }}</b>
+                        {{ form.type1(class="form-control") }}
+
+                        <b>{{ form.price_pre1.label }}</b>
+                        {{ form.price_pre1(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                    <div class="col"><b>{{ form.precast2.label }}</b>
+                        {{ form.precast2(class="form-control", placeholder="size2") }}
+
+                        <b>{{ form.length2.label }}</b>
+                        {{ form.length2(class="form-control", placeholder="") }}
+
+                        <b>{{ form.pre_width2.label }}</b>
+                        {{ form.pre_width2(class="form-control") }}
+
+                        <b>{{ form.type2.label }}</b>
+                        {{ form.type2(class="form-control") }}
+
+                        <b>{{ form.price_pre2.label }}</b>
+                        {{ form.price_pre2(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                    <div class="col"><b>{{ form.precast3.label }}</b>
+                        {{ form.precast3(class="form-control", placeholder="size3") }}
+
+                        <b>{{ form.length3.label }}</b>
+                        {{ form.length3(class="form-control", placeholder="") }}
+
+                        <b>{{ form.pre_width3.label }}</b>
+                        {{ form.pre_width3(class="form-control") }}
+
+                        <b>{{ form.type3.label }}</b>
+                        {{ form.type3(class="form-control") }}
+
+                        <b>{{ form.price_pre3.label }}</b>
+                        {{ form.price_pre3(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                    <div class="col"><b>{{ form.precast4.label }}</b>
+                        {{ form.precast4(class="form-control", placeholder="size4") }}
+
+                        <b>{{ form.length4.label }}</b>
+                        {{ form.length4(class="form-control", placeholder="") }}
+
+                        <b>{{ form.pre_width4.label }}</b>
+                        {{ form.pre_width4(class="form-control") }}
+
+                        <b>{{ form.type4.label }}</b>
+                        {{ form.type4(class="form-control") }}
+
+                        <b>{{ form.price_pre4.label }}</b>
+                        {{ form.price_pre4(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                    <div class="col"><b>{{ form.precast5.label }}</b>
+                        {{ form.precast5(class="form-control", placeholder="size5") }}
+
+                        <b>{{ form.length5.label }}</b>
+                        {{ form.length5(class="form-control", placeholder="") }}
+
+                        <b>{{ form.pre_width5.label }}</b>
+                        {{ form.pre_width5(class="form-control") }}
+
+                        <b>{{ form.type5.label }}</b>
+                        {{ form.type5(class="form-control") }}
+
+                        <b>{{ form.price_pre5.label }}</b>
+                        {{ form.price_pre5(class="form-control", placeholder="UZS/Transfer") }}
+                    </div>
+                    <p>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseWidthExample" aria-expanded="false"
+                            aria-controls="collapseWidthExample">
+                            <b>+</b>
+                        </button>
+                    </p>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-vertical" id="collapseWidthExample">
+                            <div class="card card-body">
+                                COLLAPSION <br>
+                                COLLAPSION <br>
+                                COLLAPSION <br>
+                                COLLAPSION <br>
+                                COLLAPSION
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">{{ form.submit(class="btn btn-success") }}</div>
+    </form>
+</body>
+<br>
+<style>
+    h2 {
+        text-align: center;
+        color: black;
+        /*font-family: Papyrus;*/
+        font-family: "Courier New", monospace;
+    }
+
+    .form-control.container {
+        background-color: #ffbe98;
+    }
+
+    mark {
+        background-color: #749688;
+        border-radius: 20px;
+        padding: absolute;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+{% endblock %}

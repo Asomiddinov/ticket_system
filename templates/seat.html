@@ -1,0 +1,47 @@
+{% extends 'layout.html'%}
+{% block content %}
+<h1>Create Seats</h1>
+<center>
+    <form method="POST">
+        <div class="row container">
+            <div class="col">
+                <input type="number" id="seat_number" name="seat_number" class="form-control container"
+                    placeholder="Seat row" required><br>
+            </div>
+            <div class="col">
+                <input type="float" id="price" name="price" class="form-control container" placeholder="Price"
+                    required><br>
+            </div>
+            <div class="col">
+                <input type="" id="is_booked" name="is_booked" class="form-control container" placeholder=""><br>
+            </div>
+            <center>
+                <button type="submit" class="btn btn-success">Create a Seat</buton>
+            </center>
+        </div>
+    </form>
+</center>
+<br>
+<h1>Created Seats</h1>
+<div class="container">
+    <div class="grid-container">
+        {% for i in seats %}
+        <div class="form-control">
+            <b>{{ i.id }}. Seat Row: {{ i.seat_number }}</b><br>
+            Price of this seat row: <b>{{ "{:,}".format(i.price) }}</b> UZS<br>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .form-control {
+        background-color: #749688;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+</style>
+{% endblock %}
